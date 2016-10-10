@@ -7,7 +7,8 @@ body {
 
 }
 
-h1, h2 {
+h1, 
+h2 {
     margin: 0;
 }
 
@@ -46,66 +47,37 @@ p {
     text-decoration: none;
 }
 
-.www {
+.title h2 {
+    width: 200px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.pad_color {
+    padding: 20px;
+    color: #fff;
+}
+
+.www_background {
     background-color: #4286f4;
-    padding: 20px;
-    color: #fff;
 }
 
-.www h2 {
-    width: 200px;
-    text-align: center;
-    margin: 0 auto;
-}
-
-.basics {
+.basics_background {
     background-color: #f93939;
-    padding: 20px;
-    color: #fff;
 }
 
-.basics h2 {
-    width: 200px;
-    text-align: center;
-    margin: 0 auto;
-}
-
-.basics li {
+.basics_background li {
     padding: 10px;
 }
 
-.elements {
+.elements_background {
     background-color: #ff9347;
-    padding: 20px;
-    color: #fff;
 }
 
-.elements h2 {
-    width: 200px;
-    text-align: center;
-    margin: 0 auto;
-}
-
-.attributes {
+.attributes_background {
     background-color: #42f489;
-    padding: 20px;
-    color: #fff;
 }
 
-.attributes h2 {
-    width: 200px;
-    text-align: center;
-    margin: 0 auto;
-}
-
-.inline_block {
+.inline_block_background {
     background-color: #42ebf4;
-    padding: 20px;
-    color: #fff;
-}
-
-.inline_block h2 {
-    width: 200px;
-    text-align: center;
-    margin: 0 auto;
 }
