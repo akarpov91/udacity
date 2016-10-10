@@ -1,0 +1,111 @@
+body {
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+    background-color: gray;
+    font-family: helvetica, arial, sans-serif;
+
+}
+
+h1, h2 {
+    margin: 0;
+}
+
+p {
+    line-height: 1.4em;
+}
+
+.main_wrapper {
+    max-width: 800px;
+    background-color: #fff;
+    margin: 0 auto;
+}
+
+.nav {
+    margin: 0 auto;
+}
+
+.nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.nav li {
+    display: inline;
+    float: left;
+}
+
+.nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.www {
+    background-color: #4286f4;
+    padding: 20px;
+    color: #fff;
+}
+
+.www h2 {
+    width: 200px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.basics {
+    background-color: #f93939;
+    padding: 20px;
+    color: #fff;
+}
+
+.basics h2 {
+    width: 200px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.basics li {
+    padding: 10px;
+}
+
+.elements {
+    background-color: #ff9347;
+    padding: 20px;
+    color: #fff;
+}
+
+.elements h2 {
+    width: 200px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.attributes {
+    background-color: #42f489;
+    padding: 20px;
+    color: #fff;
+}
+
+.attributes h2 {
+    width: 200px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.inline_block {
+    background-color: #42ebf4;
+    padding: 20px;
+    color: #fff;
+}
+
+.inline_block h2 {
+    width: 200px;
+    text-align: center;
+    margin: 0 auto;
+}
