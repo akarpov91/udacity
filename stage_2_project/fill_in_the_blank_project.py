@@ -1,93 +1,69 @@
 #global variables
-easy_questions = '''A computer program is a list of __1__. __2__, in terms of programming,
-is  the set of rules that determine the arrangement of words, symbols, and pharases accespted
-by the programming language. __3__ is a programming language. Grammar sets rules of languages,
-the ways syntax sets rules for __4__.'''
+game_data = {
+    'easy': {
+        'quiz': 'A computer program is a list of __1__. __2__, in terms of programming, is  the set of rules that determine the arrangement of words, symbols, and pharases accespted by the programming language. __3__ is a programming language. Grammar sets rules of languages, the ways syntax sets rules for __4__.',
+        'answers': ["instructions", "Syntax", "Python", "programming"]
+    },
+    'medium': {
+        'quiz': '__1__ are used for data storage. __2__ are a block of code that can be reused. __3__s are essentially variable names for the code in the function definition. __4__ gives the output to the program while __5__ give the output to the user.',
+        'answers': ["Variables", "Functions", "Parameter", "Return", "print"]
+    },
+    'hard': {
+        'quiz': 'The __1__ operator could be used to check if a specified object exists within an iterable object container, such as a list. Python uses __2__ to define code blocks, instead of brackets. The standard Python indentation is __3__ spaces. Using __4__ before a boolean expression inverts it.',
+        'answers': ["in", "indentation", "4", "not"]
+    }
+}
 
-easy_answers = ["instructions", "Syntax", "Python", "programming"]
-
-medium_questions = '''__1__ are used for data storage. __2__ are a block of code that can be reused. __3__s are essentially variable names for the code in the function definition. __4__ gives the output to the program while __5__ give the output to the user.'''
-
-medium_answers = ["Variables", "Functions", "Parameter", "Return", "print"]
-
-hard_questions = '''The __1__ operator could be used to check if a specified object exists within an iterable object container, such as a list. Python uses __2__ to define code blocks, instead of brackets. The standard Python indentation is __3__ spaces. Using __4__ before a boolean expression inverts it.  '''
-
-hard_answers = ["in", "indentation", "4", "not"]
-
-TRY_AGAIN = "Please type 'easy', 'medium' or 'hard'"
 WRONG_ANSWER = "Incorrect: Please Try Again"
-#//
+START_NUMBER_OF_ANSWERS = 1
+START_ATTEMPT = 1
+MAX_ATTEMPTS = 4
+
+def play_again(result):
+    """ plays or exits game based on user input.
+    Args:
+        result: reslult string
+    Behavior:
+        retrieves a string based on user input. Then either restarts the game or exits. 
+    Returns:
+        starts new game or exist.
+    """
+    play_again = raw_input(result + " Would you like to play again? Yes or No: ")
+    if play_again.lower() == "yes":
+        print play_quiz()
+    else:
+        exit("Play again soon")
+
 
 print "Awesome Python Quiz"
 
-def get_questions(LEVEL):
-    """ Returns questions based on user input ."""
-    if LEVEL.lower() == "easy":
-        questions = easy_questions.split()
-        return questions;
-    elif LEVEL.lower() == "medium":
-        questions = medium_questions.split()
-        return questions;
-    elif LEVEL.lower() == "hard":
-        questions = hard_questions.split()
-        return questions;
-    else:
-        questions = TRY_AGAIN
-    return questions
-
-def get_answer(LEVEL):
-    """ Returns answers based on user input ."""
-    if LEVEL.lower() == "easy":
-        answers = easy_answers
-    elif LEVEL.lower() == "medium":
-        answers = medium_answers
-    elif LEVEL.lower() == "hard":
-        answers = hard_answers
-    else:
-        answers = TRY_AGAIN
-    return answers
-
 def play_quiz():
-    attempt = 1
-    while attempt <= 3:
-        LEVEL = raw_input("Choose Game Difficulty: Easy, Medium or Hard: ")
-        LEVEL_QUESTIONS = get_questions(LEVEL)
-        LEVEL_ANSWERS = get_answer(LEVEL)
-        if LEVEL_QUESTIONS != TRY_AGAIN:
-            print ' '.join( LEVEL_QUESTIONS )
-            i = 1
-            attempt = 1
-            replacement = []
-            print len(LEVEL_ANSWERS)
-            while i <= len(LEVEL_ANSWERS):
-                while attempt <= 3:
-                    player_answer = raw_input("What would you substitute for __"+str(i)+"__: ")
-                    if player_answer == LEVEL_ANSWERS[i-1]:
-                        attempt = 1
-                        for question in LEVEL_QUESTIONS:
-                            if "__"+str(i)+"__" in question:
-                                replaced_string = question.replace("__"+str(i)+"__", str(LEVEL_ANSWERS[i-1]))
-                                replacement += [replaced_string]
-                            else:
-                                replacement += [question]
-                        replacement_final = replacement
-                        replacement = []
-                        LEVEL_QUESTIONS = replacement_final
-                        print ' '.join(LEVEL_QUESTIONS)
-                        i += 1
-                        if i > len(LEVEL_ANSWERS):
-                            break
-                    else:
-                        print WRONG_ANSWER
-                        print "Attempt Number: " + str(attempt)
-                        attempt += 1
-                        if attempt == 4:
-                            return "Game Over! Please Start Over."
-            return "Congratulations! You won!"
+    """ plays game.
+    Behavior:
+        retrieves questions based on user level input. Prompts user to provide answer for each question. If answer is correct, replaces the blank sections with the answer. Continues in loop for as many times as there are answers or until MAX_ATTEMPTS have been made.
+    Returns:
+        questions with correct answers
+    """
+    attempt = START_ATTEMPT
+    level = raw_input('Choose Game Difficulty: Easy, Medium or Hard: ')
+    paragraph = game_data[level.lower()]['quiz']
+    number_of_answers = START_NUMBER_OF_ANSWERS
+    print paragraph
+    while number_of_answers <= len(game_data[level.lower()]['answers']):
+        player_answer = raw_input("What would you substitute for __"+str(number_of_answers)+"__: ")
+        if player_answer == game_data[level.lower()]['answers'][number_of_answers-1]:
+            print "Correct"
+            paragraph = paragraph.replace("__"+str(number_of_answers)+"__", game_data[level.lower()]['answers'][number_of_answers-1])
+            print paragraph
+            number_of_answers += 1
         else:
-            print TRY_AGAIN
-            attempt += 1
-            if attempt == 4:
-                return "Game Over! Please Start Over."
+            if attempt < MAX_ATTEMPTS:
+                print WRONG_ANSWER
+                attempt += 1
+            else:
+                result = "Game Over! "
+                print play_again(result)
+    result = "Congratulations! "
+    print play_again(result)
 
 print play_quiz()
