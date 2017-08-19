@@ -28,7 +28,7 @@ def play_again(result):
     Returns:
         starts new game or exist.
     """
-    play_again = raw_input(result + " Would you like to play again? Yes or No: ")
+    play_again = raw_input(result + "Would you like to play again? Yes or No: ")
     if play_again.lower() == "yes":
         print play_quiz()
     else:
@@ -44,26 +44,22 @@ def play_quiz():
     Returns:
         questions with correct answers
     """
-    attempt = START_ATTEMPT
+    attempt, number_of_answers = START_ATTEMPT, START_NUMBER_OF_ANSWERS
     level = raw_input('Choose Game Difficulty: Easy, Medium or Hard: ')
     paragraph = game_data[level.lower()]['quiz']
-    number_of_answers = START_NUMBER_OF_ANSWERS
     print paragraph
     while number_of_answers <= len(game_data[level.lower()]['answers']):
         player_answer = raw_input("What would you substitute for __"+str(number_of_answers)+"__: ")
         if player_answer == game_data[level.lower()]['answers'][number_of_answers-1]:
-            print "Correct"
             paragraph = paragraph.replace("__"+str(number_of_answers)+"__", game_data[level.lower()]['answers'][number_of_answers-1])
-            print paragraph
+            print "Correct\n" + paragraph
             number_of_answers += 1
         else:
             if attempt < MAX_ATTEMPTS:
                 print WRONG_ANSWER
                 attempt += 1
             else:
-                result = "Game Over! "
-                print play_again(result)
-    result = "Congratulations! "
-    print play_again(result)
+                print play_again("Game Over!")
+    print play_again("Congratulations!")
 
 print play_quiz()
