@@ -1,0 +1,168 @@
+
+<head>
+    <meta charset="utf-8">
+    <title>Fresh Tomatoes!</title>
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <style type="text/css" media="screen">
+        body {
+            padding-top: 80px;
+        }
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
+        }
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+        .movie-tile {
+            margin-bottom: 20px;
+            padding-top: 20px;
+            height: 600px;
+        }
+        .movie-tile:hover {
+            background-color: #EEE;
+            cursor: pointer;
+        }
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+        .movie_rating {
+            font-size: 12px;
+            color: red;
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.movie-tile', function (event) {
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+          $('.movie-tile').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+        });
+    </script>
+</head>
+
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="tSVeDx9fk60" data-toggle="modal" data-target="#trailer">
+    <img src="http://www.gstatic.com/tv/thumb/movieposters/14569/p14569_p_v8_ah.jpg" width="220" height="342">
+    <h2>Groundhog Day<span class="movie_rating">&nbsp;(PG)</span></h2>
+    <h4 style="text-decoration: underline;">Summary</h4>
+    <h6>Phil (Bill Murray), a weatherman, is out to cover the annual emergence of the groundhog from its hole. He gets caught in a blizzard that he didnt predict and finds himself trapped in a time warp. He is doomed to relive the same day over and over again until he gets it right.</h6>
+    <h4>Cast:</h4>
+    <h6 class="clear">Bill Murray (Phil), Andie MacDowell (Rita), Chris Elliot (Larry)...</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="VgSqm8-wXWA" data-toggle="modal" data-target="#trailer">
+    <img src="http://t3.gstatic.com/images?q=tbn:ANd9GcRBYp315X-0pNvI-Dvqj8FR0AGdF39VCprXpurd0cQel__e17CP" width="220" height="342">
+    <h2>The Big Lebowski<span class="movie_rating">&nbsp;(R)</span></h2>
+    <h4 style="text-decoration: underline;">Summary</h4>
+    <h6>Jeff Bridges plays Jeff Lebowski who insists on being called "the Dude," a laid-back, easygoing burnout who happens to have the same name as a millionaire whose wife owes a lot of dangerous people a whole bunch of money -- resulting in the Dude having his rug soiled, sending him spiraling into the Los Angeles underworld.</h6>
+    <h4>Cast:</h4>
+    <h6 class="clear">Jeff Bridges (The Dude), John Goodman (Walter), Steve Buscemi (Theodore )...</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="Esrf8X07eZk" data-toggle="modal" data-target="#trailer">
+    <img src="http://www.gstatic.com/tv/thumb/movieposters/159796/p159796_p_v8_ag.jpg" width="220" height="342">
+    <h2>Children of Men<span class="movie_rating">&nbsp;(R)</span></h2>
+    <h4 style="text-decoration: underline;">Summary</h4>
+    <h6>When infertility threatens mankind with extinction and the last child born has perished, a disillusioned bureaucrat (Clive Owen) becomes the unlikely champion in the fight for the survival of Earths population;</h6>
+    <h4>Cast:</h4>
+    <h6 class="clear">Clive Owen, Julianne Moore, Michael Caine...</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="Esrf8X07eZk" data-toggle="modal" data-target="#trailer">
+    <img src="http://t2.gstatic.com/images?q=tbn:ANd9GcRo9vfJCM6dzPkZHIHBVCtlJnAnew9Ai26kEdrli0-tfmatmciD" width="220" height="342">
+    <h2>Inception<span class="movie_rating">&nbsp;(PG-13)</span></h2>
+    <h4 style="text-decoration: underline;">Summary</h4>
+    <h6>Dom Cobb (Leonardo DiCaprio) is a thief with the rare ability to enter peoples dreams and steal their secrets from their subconscious.</h6>
+    <h4>Cast:</h4>
+    <h6 class="clear">Leonardo DiCaprio, Tom Hardy, Ellen Page...</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="Df980EYeWMw" data-toggle="modal" data-target="#trailer">
+    <img src="http://t1.gstatic.com/images?q=tbn:ANd9GcS5yuCSZqK5Hha5lElqZr2SCYVY-sYycKZ8PJ8POfNQkOmSuo5B" width="220" height="342">
+    <h2>The Revenant<span class="movie_rating">&nbsp;(R)</span></h2>
+    <h4 style="text-decoration: underline;">Summary</h4>
+    <h6>While exploring the uncharted wilderness in 1823, frontiersman Hugh Glass (Leonardo DiCaprio) sustains life-threatening injuries from a brutal bear attack.</h6>
+    <h4>Cast:</h4>
+    <h6 class="clear">Leonardo DiCaprio, Tom Hardy, Will Poulter...</h6>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="Q0CbN8sfihY" data-toggle="modal" data-target="#trailer">
+    <img src="http://t2.gstatic.com/images?q=tbn:ANd9GcRgcIU4MKHZkZNeDt_tAewyfwX7PAmSdj_7wdg_FInkZw8Um9F_" width="220" height="342">
+    <h2>Star Wars: The Last Jedi<span class="movie_rating">&nbsp;()</span></h2>
+    <h4 style="text-decoration: underline;">Summary</h4>
+    <h6>Rey develops her newly discovered abilities with the guidance of Luke Skywalker, who is unsettled by the strength of her powers.</h6>
+    <h4>Cast:</h4>
+    <h6 class="clear">Daisy Ridley, Mark Hamill, John Boyega...</h6>
+</div>
+
+    </div>
+  </body>
+</html>
