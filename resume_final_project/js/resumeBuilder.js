@@ -82,7 +82,7 @@ var education = {
     ]
 };
 
-bio.display = function (contactLocation) {
+bio.display = function () {
     var formattedName = HTMLheaderName.replace("%data%", bio.name);
     var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
     $("#header").prepend(formattedRole);
@@ -93,7 +93,7 @@ bio.display = function (contactLocation) {
     var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
     var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
     var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
-    $(contactLocation).append(formattedMobile, formattedEmail, formattedGithub, formattedTwitter, formattedLocation);
+    $("#topContacts, #footerContacts").append(formattedMobile, formattedEmail, formattedGithub, formattedTwitter, formattedLocation);
 
     var formattedBioImage = HTMLbioPic.replace("%data%", bio.biopic);
     $("#header").append(HTMLskillsStart);
@@ -195,10 +195,9 @@ function displayConnect() {
     $("#lets-connect").append(HTMLschoolStart);
 }
 
-bio.display("#topContacts");
+bio.display();
 work.display();
 inName("alex Karpov");
 projects.display();
 education.display();
 displayMap();
-displayContacts("#footerContacts");
