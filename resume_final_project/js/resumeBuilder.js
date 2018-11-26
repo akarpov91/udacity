@@ -82,27 +82,19 @@ var education = {
     ]
 };
 
-function displayHeader() {
+bio.display = function (contactLocation) {
     var formattedName = HTMLheaderName.replace("%data%", bio.name);
     var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
     $("#header").prepend(formattedRole);
     $("#header").prepend(formattedName);
-}
 
-function displayContacts(contactLocation) {
     var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
     var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
     var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
     var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
     var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
-    $(contactLocation).append(formattedMobile);
-    $(contactLocation).append(formattedEmail);
-    $(contactLocation).append(formattedGithub);
-    $(contactLocation).append(formattedTwitter);
-    $(contactLocation).append(formattedLocation);
-}
+    $(contactLocation).append(formattedMobile, formattedEmail, formattedGithub, formattedTwitter, formattedLocation);
 
-function displaySkills() {
     var formattedBioImage = HTMLbioPic.replace("%data%", bio.biopic);
     $("#header").append(HTMLskillsStart);
     $("#skills-h3").prepend(formattedBioImage);
@@ -112,9 +104,9 @@ function displaySkills() {
             $("#skills").append(formattedSkills);
         });
     }
-}
+};
 
-function displayWork() {
+work.display = function () {
     if (work.jobs.length > 0) {
         work.jobs.forEach(function (work) {
             $("#workExperience").append(HTMLworkStart);
@@ -128,7 +120,7 @@ function displayWork() {
             console.log(formattedDate);
         });
     }
-}
+};
 
 function inName(name) {
     name = name.split(" ");
@@ -203,10 +195,8 @@ function displayConnect() {
     $("#lets-connect").append(HTMLschoolStart);
 }
 
-displayHeader();
-displayContacts("#topContacts");
-displaySkills();
-displayWork();
+bio.display("#topContacts");
+work.display();
 inName("alex Karpov");
 projects.display();
 education.display();
